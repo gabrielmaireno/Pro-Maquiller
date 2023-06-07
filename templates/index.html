@@ -4,30 +4,172 @@
 <head>
     <title>Reconhecimento de Cor</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
+
+<!-- Pagina que mostra a imagem -->
 
 <body style="background-color: #dcb3ac;">
     {% if imagem_path %}
-    <h1>Cor Identificada: {{ cor_identificada }}</h1>
-    <img src="{{ url_for('imagem_processada', filename=imagem_path) }}" alt="Imagem Processada">
+    <h1 data-aos="fade-down" class="titulo pt-4">Resultado do Processamento</h1>
+    <hr data-aos="fade-down" style="opacity: 1; margin: auto; height:3px; border:none;" width="60%" color="white">
+
+    <div class="py-5">
+        <h3 data-aos="fade-up" class="Rubik" style="text-align: center; color: white;">O seu tom de pele é: {{
+            cor_identificada[3] }}</h3>
+        <h3 data-aos="fade-up" class="Rubik" style="text-align: center; color: white;">E a maquiagem mais indicada para
+            o seu tom é: {{ cor_identificada[4] }}</h3>
+
+        <img class="mx-auto d-block pt-4" data-aos="flip-up" data-aos-duration="2000" style="width: 50%;"
+            src="{{ url_for('imagem_processada', filename=imagem_path) }}" alt="Imagem Processada">
+    </div>
+
+    <div style="text-align: center;" class="pb-4">
+        <button class="btn btn-light" onclick="history.back()">Voltar</button>
+    </div>
     {% else %}
 
+    <!-- =============================================================== -->
 
-        <h1 class="titulo pt-5"> Pro Maquiller</h1>
+    <!-- Titulo -->
+
+    <h1 data-aos="fade-down" class="titulo pt-4"> Pro Maquiller</h1>
+
+    <!-- =============================================================== -->
+
+    <!-- Subtitulo -->
+
+    <div data-aos="fade-up" data-aos-duration="1000" class="row g-0 pb-4">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="subTitulo Rubik">
+                <span>Software de detecção de rosto com captura da cor da pele que serve para comparação com
+                    vários tipos de maquiagem, afim de conceder uma indicação que possa ajudar a encontrar a maquiagem
+                    mais natural a pele.</span>
+            </div>
+
+            <div class="Rubik pt-4" style="font-size: 1rem; color: white; text-align: center;">
+                <span>Para categorização das cores de pele e referência de maquiagens utilizamos a seguinte tabela: <a
+                        href="/static/tabela.pdf" target="_blank"> Clique aqui </a></span>
+            </div>
+        </div>
+        <div class="col-3"></div>
+
+    </div>
+
+    <hr data-aos="fade-up" style="opacity: 1; margin: auto; height:3px; border:none;" width="60%" color="white">
+
+    <br>
+    <br>
+
+    <!-- =============================================================== -->
+
+    <!-- Imagens de exemplo -->
+
+    <div>
+        <div class="container-fluid text-center pb-5">
+            <div class="row">
+                <div class="pb-3">
+                    <span class="texto Rubik" data-aos="zoom-out" data-aos-duration="1500"> Exemplos de como é a
+                        detecção: </span>
+                </div>
+                <div class="col">
+                    <img data-aos="zoom-in-right" class="imagem rounded" src="/static/1.jpg" alt="Imagem1">
+                </div>
+                <div class="col">
+                    <img data-aos="zoom-in-right" class="imagem rounded" src="/static/2.jpg" alt="Imagem2">
+                </div>
+                <div class="col">
+                    <img data-aos="zoom-in-up" class="imagem rounded" src="/static/3.jpg" alt="Imagem3">
+                </div>
+                <div class="col">
+                    <img data-aos="zoom-in-left" class="imagem rounded" src="/static/4.jpg" alt="Imagem4">
+                </div>
+                <div class="col">
+                    <img data-aos="zoom-in-left" class="imagem rounded" src="/static/5.jpg" alt="Imagem5">
+                </div>
+
+                <div class="Rubik pt-5" style="color:white">
+                    <span> Imagens retiradas do site: <a href="https://thispersondoesnotexist.com"
+                            target="_blank">https://thispersondoesnotexist.com</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-        <input  type="file" name="imagem">
-        <input class="btn btn-light" type="submit" value="Enviar">
-    </form>
+    <div class="pb-5" data-aos="fade-up">
+        <hr style="opacity: 1; margin: auto; height:3px; border:none;" width="60%" color="white">
+    </div>
+    <!-- =============================================================== -->
+
+    <!-- Form que envia a foto -->
+
+    <div class="pb-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row g-0 pt-4">
+            <div class="col-2"></div>
+
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header Rubik" style="background-color: #E17E6C; color: white; text-align: center;">
+                        Faça você mesmo!
+                    </div>
+                    <div class="card-body Rubik" style="">
+                        <div class="pb-4">
+                            <span>
+                                <strong style="background-color: #DCB3C0;"> De preferência tire uma foto com o celular
+                                    na
+                                    vertical, centralize bem o rosto e
+                                    utilize a luz do dia para que a coleta de cor seja a mais precisa possível.
+                                </strong>
+                            </span>
+                        </div>
+
+                        <div class="border border-dark rounded p-2">
+                            <form method="POST" action="/upload" enctype="multipart/form-data">
+                                <label for="formFile" class="form-label">Faça o upload da sua foto: </label>
+                                <input id="formFile" class="form-control" type="file" name="imagem">
+                                <div class="p-2" style="text-align: center;">
+                                    <input class="btn btn-light" type="submit" value="Enviar">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-2"></div>
+        </div>
+    </div>
+
     {% endif %}
+
+    <!-- =============================================================== -->
+
+
 </body>
+
+<footer id="sticky-footer" class="flex-shrink-0 py-4 text-white Rubik" style="background-color: #5C332C;">
+    <div class="container text-center">
+        <small>Projeto A3 de Computação Gráfica</small>
+        <br>
+        <small>Localizado no GitHub:</small>
+        <a href="https://github.com/gabrielmaireno/Pro-Maquiller"> <i class="bi bi-github"></i></a>
+    </div>
+</footer>
 
 </html>
 
@@ -38,6 +180,57 @@
         font-size: 7rem;
         color: white;
     }
+
+    .subTitulo {
+        font-family: 'Tangerine', cursive;
+        text-align: center;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .texto {
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .imagem {
+        width: 100%;
+    }
+
+    .Rubik {
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .btn-light {
+        background-color: #E17E6C !important;
+        color: white !important;
+    }
+
+    .btn-light:hover {
+        background-color: #cc7262 !important;
+        color: white !important;
+    }
+
+    a {
+        color: #cc7262;
+        font-weight: 700;
+    }
+
+    a:hover {
+        color: #ad6053;
+    }
+
+    input[type=file]::file-selector-button {
+
+        color: white;
+        background-color: #E17E6C;
+    }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+<script>AOS.init();</script>
