@@ -14,10 +14,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
+# Resposta ao enivar / Rota que mostra a imagem processada no navegador
 @app.route('/imagem_processada/<path:filename>')
 def imagem_processada(filename):
     return send_file(filename, mimetype='image/jpeg')
 
+
+# Upload
 @app.route('/upload', methods=['POST'])
 def upload():
     # Obtém o arquivo enviado pelo usuário
@@ -37,8 +41,9 @@ def upload():
     # Retorna a cor identificada e o caminho da imagem processada para o front-end
     return render_template('index.html', cor_identificada=cor_identificada, imagem_path=imagem_processada_path)
 
+
+# Código que processa a imagem
 def processar_imagem(imagem_path):
-    # Código de processamento da imagem (mesmo código que você compartilhou)
 
     IMAGE_FILES = [imagem_path]
     with mp_face_detection.FaceDetection(
