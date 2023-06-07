@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reconhecimento de Cor</title>
+</head>
+
+<body>
+    {% if imagem_path %}
+    <h1>Cor Identificada: {{ cor_identificada }}</h1>
+    <img src="{{ url_for('imagem_processada', filename=imagem_path) }}" alt="Imagem Processada">
+    {% else %}
+    <h1>Envie uma imagem</h1>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="imagem">
+        <input type="submit" value="Enviar">
+    </form>
+    {% endif %}
+</body>
+
+</html>
