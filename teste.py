@@ -130,12 +130,12 @@ def processar_imagem(imagem_path):
             cv2.rectangle(annotated_image, (x_quad, y_quad), (x_quad + width_quad, y_quad + height_quad), cor, -1)
 
             texto = cor_identificada[3]
-            posicao_texto = (10, 50)
-            fonte = cv2.FONT_HERSHEY_SIMPLEX
-            escala_fonte = 1
-            cor_fonte = (255, 255, 255)
-            espessura_linha = 2
-            cv2.putText(annotated_image, texto, posicao_texto, fonte, escala_fonte, cor_fonte, espessura_linha)
+            recomendacao_maqui = cor_identificada[4]
+            fonte = cv2.FONT_HERSHEY_TRIPLEX
+            cor_fonte = (0, 250, 0)
+
+            cv2.putText(annotated_image, texto, (10, 50), fonte, 1, cor_fonte, 2)
+            cv2.putText(annotated_image, recomendacao_maqui, (10, image.shape[0] - 10), fonte, 1, cor_fonte, 2)
 
             return cor_identificada, annotated_image
 
