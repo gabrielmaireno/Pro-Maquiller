@@ -43,6 +43,16 @@ def upload():
     # Retorna a cor identificada e o caminho da imagem processada para o front-end
     return render_template('index.html', cor_identificada=cor_identificada, imagem_path=imagem_processada_path)
 
+def calcular_distancia(cor1, cor2):
+                calculo = distance.euclidean(cor1, [cor2[0], cor2[1], cor2[2]])
+                return calculo
+
+def mediaCores(array):
+                    media_cores = []
+                    for i in range(3):
+                        media = np.mean(array[:, :, i])
+                        media_cores.append(media)
+                    return media_cores
 
 # Código que processa a imagem
 def processar_imagem(imagem_path):
@@ -93,23 +103,12 @@ def processar_imagem(imagem_path):
                     annotated_image, (ponto_x3, ponto_y), (ponto_x3 + 10, ponto_y + 10), (0, 0, 255), 1
                 )
 
-                def mediaCores(array):
-                    media_cores = []
-                    for i in range(3):
-                        media = np.mean(array[:, :, i])
-                        media_cores.append(media)
-                    return media_cores
-
                 cor_ponto1Total = mediaCores(cor_ponto1)
                 cor_ponto2Total = mediaCores(cor_ponto2)
                 cor_ponto3Total = mediaCores(cor_ponto3)
 
                 media_rel = [(a + b + c) / 3 for a, b, c in zip(cor_ponto1Total, cor_ponto2Total, cor_ponto3Total)]
                 print("media real: ", media_rel)
-
-            def calcular_distancia(cor1, cor2):
-                calculo = distance.euclidean(cor1, [cor2[0], cor2[1], cor2[2]])
-                return calculo
 
             cor_atual = tuple(media_rel)
             menor_distancia = float('inf')
