@@ -12,9 +12,11 @@
 
   - Tirar a foto com iluminação ambiente.
 
-  Após receber a imagem, o algoritmo realizará uma análise facial e dividirá o rosto do usuário em um quadrante. Em seguida, esse quadrante será subdividido em três pequenos quadrados de 10x10 pixels. Um desses quadrados será posicionado na região do nariz, enquanto os outros dois serão colocados em cada uma das bochechas. Essa divisão permitirá uma análise mais detalhada das cores nessas áreas específicas do rosto.
+Após receber a imagem, o algoritmo realizará uma análise facial e dividirá o rosto do usuário em um quadrante. Em seguida, esse quadrante será subdividido em três pequenos quadrados de 10x10 pixels. Um desses quadrados será posicionado na região do nariz, enquanto os outros dois serão colocados em cada uma das bochechas. Essa divisão permitirá uma análise mais   detalhada das cores nessas áreas específicas do rosto.
 
-![Exemplo](https://github.com/gabrielmaireno/Pro-Maquiller/assets/73539365/a8305071-704d-4dfe-8850-8cae0427581e)
+<p align="center">
+  <img width="460" src="https://github.com/gabrielmaireno/Pro-Maquiller/assets/73539365/a8305071-704d-4dfe-8850-8cae0427581e">
+</p>
 
 # Video de Demonstração
 
